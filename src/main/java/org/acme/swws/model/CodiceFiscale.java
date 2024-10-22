@@ -1,4 +1,4 @@
-package org.acme.click.model;
+package org.acme.swws.model;
 
 public class CodiceFiscale {
 

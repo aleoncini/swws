@@ -1,7 +1,7 @@
 package org.acme.swws.rest;
 
 
-import org.acme.click.model.CodiceFiscale;
+import org.acme.swws.model.CodiceFiscale;
 import org.jboss.logging.Logger;
 
 import jakarta.ws.rs.GET;
