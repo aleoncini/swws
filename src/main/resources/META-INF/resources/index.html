@@ -7,14 +7,12 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>ASK Project</title>
+    <title>Serverless Workflow WorkShop - Home page</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://lukaku:8443/js/keycloak.js"></script>
-
 
 </head>
 
@@ -35,12 +33,46 @@
 
 <!-- Begin page content -->
 <main role="main" class="container">
-    <h1 class="mt-5">ASK Project</h1>
-    <p class="lead">A very simple web application used to demonstrate the <a href="https://quarkus.io/guides/security-overview">Quarkus Security</a> framework.</p>
-    <p>Use the buttons to test API protection.</p>
+    <h1 class="mt-5">Serverless Workflow WorkShop - Home page</h1>
+    <p class="lead">This is an HUB of mock services that can be used in a <a href="https://docs.openshift.com/serverless/1.33/about/serverless-logic-overview.html>">serverless workflow</a></p>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-left">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3" id="user_api_button" disabled>User API</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4" id="admin_api_button">Admin API</button>
+        <div class="list-group">
+            <a href="/urp/protocollo/10" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">URP Protocollo</h5>
+                <small class="text-muted">api service</small>
+              </div>
+              <p class="mb-1">servizio che restituisce una stringa randomica (num. di protocollo) di <i>N</i> caratteri</p>
+              <p class="mb-1">URL [GET]: <span style="color: #5555aa; font-family: 'courier'">/urp/protocollo/{size}</span></p>
+              <small>PATH PARAM: size = il numero di caratteri randomici della stringa di ritorno</small>
+            </a>
+            <a href="/cofis/isvalid/lncndr62a14h501d" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">Verifica Codice Fiscale</h5>
+                  <small class="text-muted">api service</small>
+                </div>
+                <p class="mb-1">servizio che effettua una verifica (di primo livello, ovvero solo un controllo formale del formato) del codice fiscale immesso</p>
+                <p class="mb-1">URL [GET]: <span style="color: #5555aa; font-family: 'courier'">/cofis/isvalid/{cf}</span></p>
+                <small>PATH PARAM: cf = il codice fiscale da verificare</small>
+            </a>
+            <a href="/logs" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">Log</h5>
+                  <small class="text-muted">api service</small>
+                </div>
+                <p class="mb-1">Semplice sistema di logging remoto</p>
+                <p class="mb-1">URL [POST]: <span style="color: #5555aa; font-family: 'courier'">/logs</span></p>
+                <small>Json object Log: {"message":"your message","level":"info|warning|error"}</small>
+            </a>
+            <a href="/cloudevent.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">Create Cloud Event</h5>
+                  <small class="text-muted">User Interface</small>
+                </div>
+                <p class="mb-1">Servizio web con una interfaccia che permette di creare un Cloud Event</p>
+                <p class="mb-1">URL: <span style="color: #5555aa; font-family: 'courier'">/cloudevent.html</span></p>
+            </a>
+        </div>
     </div>
 </main>
 
@@ -49,15 +81,9 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery-3.7.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/ask.js"></script>
 <script type="text/javascript">
 
     $(document).ready(function() {
-        (async() => {
-          await start();
-          $("#user_api_button").prop('disabled', false);
-        })();
-
         $("#user_api_button").click(function(){
             getUser();
         });

@@ -10,7 +10,7 @@ public class CloudEvent extends PanacheMongoEntity{
     public String id;
     public String type;
     public String source;
-    public byte[] data;
+    public String data;
 
     public CloudEvent(){
         this.id = UUID.randomUUID().toString();
@@ -26,7 +26,7 @@ public class CloudEvent extends PanacheMongoEntity{
         return this;
     }
 
-    public CloudEvent withData(byte[] data){
+    public CloudEvent withData(String data){
         this.data = data;
         return this;
     }
@@ -43,7 +43,7 @@ public class CloudEvent extends PanacheMongoEntity{
         return source;
     }
 
-    public byte[] getData() {
+    public String getData() {
         return data;
     }
 
