@@ -11,9 +11,11 @@ public class CloudEvent extends PanacheMongoEntity{
     public String type;
     public String source;
     public String data;
+    public long timestamp;
 
     public CloudEvent(){
         this.id = UUID.randomUUID().toString();
+        this.timestamp = System.currentTimeMillis();
     }
  
     public CloudEvent withType(String type){
