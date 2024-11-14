@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Serverless Workflow WorkShop - Home page</title>
+    <title>Serverless Workflow WorkShop - Approvals</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
 
@@ -34,7 +34,7 @@
 <!-- Begin page content -->
 <main role="main" class="container">
     <h1 class="mt-5">Serverless Workflow WorkShop - Home page</h1>
-    <p class="lead">This is an HUB of mock services that can be used in a <a href="https://docs.openshift.com/serverless/1.33/about/serverless-logic-overview.html>">serverless workflow</a></p>
+    <p class="lead">This is an HUB of mock services that can be used in a <a href="https://docs.openshift.com/serverless/1.33/about/serverless-logic-overview.html">serverless workflow</a></p>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-left">
         <div class="list-group">
             <a href="/urp/protocollo/10" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -72,8 +72,25 @@
                 <p class="mb-1">Servizio web con una interfaccia che permette di creare un Cloud Event</p>
                 <p class="mb-1">URL: <span style="color: #5555aa; font-family: 'courier'">/cloudevent.html</span></p>
             </a>
+            <a href="/approvals.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">Approve workflow requests</h5>
+                  <small class="text-muted">User Interface</small>
+                </div>
+                <p class="mb-1">lista di pratiche che in un workflow richiedono approvazione</p>
+                <p class="mb-1">URL: <span style="color: #5555aa; font-family: 'courier'">/approvals.html</span></p>
+            </a>
+            <a href="/workflows.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">All Workflows</h5>
+                  <small class="text-muted">User Interface</small>
+                </div>
+                <p class="mb-1">lista di tutte le pratiche create</p>
+                <p class="mb-1">URL: <span style="color: #5555aa; font-family: 'courier'">/workflows.html</span></p>
+            </a>
         </div>
     </div>
+    <p><br><br></p>
 </main>
 
 <!-- Bootstrap core JavaScript
@@ -84,9 +101,6 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
-        $("#user_api_button").click(function(){
-            getUser();
-        });
     });
 
 </script>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Serverless Workflow WorkShop - Workflows to be approved</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="img/Logo-RedHat-A-White-RGB.png" width="190" height="45" alt="Red Hat Logo" class="d-inline-block align-text-top">
+            </a>
+        </div>
+    </nav>
+
+</header>
+
+<!-- Begin page content -->
+<main role="main" class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Approvals</li>
+        </ol>
+    </nav>
+
+    <h1 class="mt-5">Serverless Workflow WorkShop - List of process to be approved</h1>
+    <p class="lead">This is a list of workflows waiting for approvals</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-left">
+
+        <div id="wf_list" class="w-100 list-group" style="display:none">
+        </div>
+
+    </div>
+</main>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="js/jquery-3.7.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swws.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        loadPraticheDaApprovare(displayPratiche);
+
+        $(document).on("click", ".approve_button", function () {
+            approve(this.dataset.id, "YES");
+            $(this).parent().parent().remove();
+        });
+        $(document).on("click", ".refuse_button", function () {
+            approve(this.dataset.id, "NO");
+            $(this).parent().parent().remove();
+        });
+
+    });
+
+</script>
+</body>
+</html>

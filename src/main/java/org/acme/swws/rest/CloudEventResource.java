@@ -3,6 +3,7 @@ package org.acme.swws.rest;
 import org.acme.swws.model.CloudEvent;
 import org.acme.swws.model.Subscription;
 import org.acme.swws.services.EventManagement;
+import org.jboss.logging.Logger;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -17,6 +18,8 @@ import jakarta.ws.rs.core.UriInfo;
 @Path("/events")
 public class CloudEventResource {
 
+    private static final Logger LOG = Logger.getLogger("EVENT_BROKER");
+
     @Inject
     EventManagement broker;
 
@@ -27,8 +30,8 @@ public class CloudEventResource {
     }
 
     @POST
-    @Produces(MediaType.TEXT_PLAIN)
-    public String publish(@QueryParam("type") String type, @QueryParam("data") String data, @QueryParam("src") String src, @Context UriInfo uriInfo) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public CloudEvent publish(@QueryParam("type") String type, @QueryParam("data") String data, @QueryParam("src") String src, @Context UriInfo uriInfo) {
         if (type == null) {
             type = "generic";
         }
@@ -44,7 +47,8 @@ public class CloudEventResource {
             .withData(data);
         event.persist();
         broker.notify(event);
-        return event.getId();
+        LOG.info("[EVENT BROKER] new event from: " + event.getSource());
+        return event;
     }
 
     @POST
